@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;800&family=Roboto+Condensed:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	margin: 0;
+	padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+    scroll-padding: 60.797px;
+	overflow-x: hidden;
+    @apply bg-slate-100 min-h-screen text-slate-900
+}
+
+h1 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 800;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h2 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+nav ul li {
+    -webkit-transition: color 0.2s, background-color 0.2s;
+    -moz-transition: color 0.2s, background-color 0.2s;
+    -o-transition: color 0.2s, background-color 0.2s;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+@layer components {
+
+	.navBarFlexBox {
+		@apply flex justify-between items-center px-12 h-full
+	}
+
+	.navBarUl {
+		@apply flex flex-col md:flex-row absolute top-[67.5px] md:top-0 md:static w-screen md:w-auto
+		h-[calc(100vh-67.5px)] md:h-full justify-center items-center uppercase font-bold text-center
+		bg-slate-100 backdrop-blur-md md:backdrop-blur-none md:bg-transparent transition-all duration-300
+		ease-in-out
+	}
+
+	.dropdownMenu {
+		opacity: 0;
+		transform: translateY(-10px);
+		transition: transform 150ms ease-in-out, opacity 150ms ease-in-out;
+		z-index: 10;
+		pointer-events: none;
+	}
+
+	.dropdown:hover .dropdownMenu {
+		pointer-events: auto;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.btnNav:focus + .dropdownMenu {
+		pointer-events: auto;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.dropdownArrow {
+		transition: transform 150ms ease-in-out, opacity 150ms ease-in-out;
+	}
+
+	.dropdown:hover .dropdownArrow {
+		@apply rotate-0
+	}
+
+	.btnNav:focus + .dropdownArrow {
+		@apply rotate-0
+	}
+
+	.cartIconShadow {
+		filter: drop-shadow(0.125rem 0.125rem 0.1rem rgba(255, 255, 255, 0.7));
+	}
+
+	.heroH1 {
+		text-shadow: 0.125rem 0.125rem 0 #ff7f3a;
+		@apply px-12 pt-8 text-6xl text-slate-800 leading-snug absolute w-[50rem]
+	}
+
+	.heroH2 {
+		@apply px-12 pt-80 text-3xl leading-snug absolute w-[38rem]
+	}
+
+	.heroImg svg {
+			width: 45rem;
+			position: absolute;
+			right: -225px;
+			top: 0;
+			transform: rotate(-60deg);
+	}
+
+	.heroLogo {
+		@apply w-72 absolute ml-12 mt-[28rem]
+	}
+
+	.heroIcon {
+		@apply w-14 absolute rotate-45 ml-[31rem] mt-[28rem]
+	}
+
+	.itemListContainer, .itemDetailContainer, .cartItemContainer, .CartModalFormContainer {
+		min-height: calc(100vh - 96px);
+	}
+
+	.girdItemListContainer {
+		@apply grid place-items-center grid-cols-4 gap-8
+	}
+
+	.listCard {
+		@apply  flex justify-start items-center p-4 gap-2 shadow-sm bg-slate-50 rounded-md cursor-pointer
+		hover:shadow-xl hover:scale-[1.0125]
+	}
+
+	.cardImg {
+		filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.3));
+	}
+
+	.itemCard {
+		transition: all 150ms ease;
+		position: relative;
+	}
+
+	.listCardImg {
+		@apply w-2/5
+	}
+
+	.listCardInfo {
+		@apply w-3/5
+	}
+
+	.gridCardLine {
+		@apply w-full h-[2px] bg-[#cbd5e1] mb-2 rounded-full
+	}
+
+	.listCardLine {
+		@apply h-[160px] w-[2px] bg-[#cbd5e1] rounded-full mr-1 ml-3
+	}
+	
+	.itemCard:hover > .gridCardLine {
+		@apply bg-[#ff7c1a] h-[2.5px]
+	}
+
+	.itemCard:hover > .listCardLine {
+		@apply bg-[#ff7c1a] w-[2.5px]
+	}
+
+	.itemCard:hover > span, .itemCard:hover > div > span {
+		@apply text-[#1a66ff]
+	}
+
+	.itemDetailH1 {
+		text-shadow: 0.135rem 0.135rem 0.05rem #0f172af7;
+	}
+
+	.itemDetailtextShadow {
+		text-shadow: 0.08rem 0.08rem 0.08rem #0f172aab;
+	}
+
+	.cartH1 {
+		text-shadow: 0.075rem 0.075rem 0.05rem #ff7f3a;
+	}
+
+	.formContainer {
+		animation: fadeInLeft 250ms linear forwards;
+		@apply relative bg-slate-200 rounded-md py-6 px-10 mt-10 grid place-items-center
+	}
+
+	.formContainer.active {
+		animation: fadeOutLeft 250ms linear forwards;
+		@apply relative bg-slate-800
+	}
+
+	@media only screen and (min-width: 2100px) {
+		.xlContainer {
+			@apply px-96
+		}
+
+		.navBarFlexBox {
+			@apply px-96
+		}
+	}
+	
+	@media only screen and (min-width: 1800px) and (max-width: 2100px) {
+		
+		.xlContainer {
+			@apply px-72
+		}
+
+		.navBarFlexBox {
+			@apply px-72
+		}
+	}
+
+	@media only screen and (min-width: 1500px) and (max-width: 1800px) {
+		
+		.xlContainer {
+			@apply px-20
+		}
+
+		.navBarFlexBox {
+			@apply px-20
+		}
+
+		.heroImg svg {
+			right: -50px;
+		}
+	}
+
+	@media only screen and (max-width: 1180px) {
+
+		.heroImg svg {
+			top: -30px;
+			right: -375px;
+			transform: rotate(-75deg);
+		}
+	}
+
+	@media only screen and (max-width: 1110px) {
+
+		.girdItemListContainer {
+			@apply grid-cols-3 gap-8
+		}
+	}
+
+	@media only screen and (max-width: 980px) {
+
+		.heroImg svg {
+			top: -100px;
+			right: -475px;
+			transform: rotate(-90deg);
+		}
+	}
+
+	@media only screen and (max-width: 860px) {
+
+		.girdItemListContainer {
+			@apply grid-cols-2 gap-8
+		}
+	}
+	
+	@media only screen and (max-width: 830px) {
+
+		.heroImg svg {
+			display: none;
+		}
+	}
+
+	@media only screen and (max-width: 770px) {
+
+		.heroH1 {
+			text-shadow: 0.1rem 0.1rem 0 #ff7f3a;
+			@apply px-4 text-5xl w-fit
+		}
+	
+		.heroH2 {
+			@apply px-4 pt-60 text-2xl w-[27rem]
+		}
+
+		.heroLogo {
+			@apply w-64
+		}
+	
+		.heroIcon {
+			@apply w-12 ml-[27rem]
+		}
+	}
+
+	@media only screen and (max-width: 767px) {
+
+		.navBarFlexBox {
+			@apply px-4
+		}
+	}
+
+
+	@media only screen and (max-width: 750px) {
+
+		.listCard {
+			@apply  flex flex-col justify-start items-start p-4 gap-2
+		}
+
+		.listCardImg {
+			@apply w-full
+		}
+
+		.listCardLine {
+			@apply h-[2px] w-[95%] mr-0 my-2
+		}
+
+		.listCardInfo {
+			@apply mb-2 w-full
+		}
+	}
+
+	@media only screen and (max-width: 650px) {
+
+		.heroH1 {
+			@apply pt-28
+		}
+
+		.heroH2 {
+			@apply pt-[19rem]
+		}
+	}
+	
+	@media only screen and (max-width: 568px) {
+
+		.heroH1 {
+			text-shadow: 0.09rem 0.09rem 0 #ff7f3a;
+			@apply text-4xl w-fit text-center
+		}
+	
+		.heroH2 {
+			@apply translate-x-1/2 right-1/2 text-xl text-center w-[20rem]
+		}
+
+		.heroLogo {
+			@apply ml-0 translate-x-1/2 right-1/2
+		}
+	
+		.heroIcon {
+			@apply ml-0 translate-x-1/2 right-1/2 mt-[19rem]
+		}
+	}
+
+
+	@media only screen and (max-width: 540px) {
+
+		.girdItemListContainer {
+			@apply grid-cols-1 gap-8
+		}
+	}
+
+	@media only screen and (max-width: 434px) {
+
+		.heroH1 {
+			text-shadow: 0.075rem 0.075rem 0 #ff7f3a;
+			line-height: 2rem;
+			@apply text-[1.55rem]
+		}
+	
+		.heroH2 {
+			@apply pt-40 w-[18rem]
+		}
+	}
+
+	@keyframes fadeInLeft {
+		0% {
+			opacity: 0;
+			left: -50px;
+		}
+		50% {
+			opacity: 0.5;
+			left: -25px;
+		}
+		100% {
+			opacity: 1;
+			left: 0;
+		}
+	}
+
+	@keyframes fadeOutLeft {
+		0% {
+			opacity: 1;
+			left: 0px;
+		}
+		50% {
+			opacity: 0.5;
+			left: -25px;
+		}
+		100% {
+			opacity: 0;
+			left: -50px;
+		}
+	}
+}
